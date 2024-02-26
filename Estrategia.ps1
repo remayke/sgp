@@ -3,12 +3,20 @@
 ##
 
 # Find all Estrateg files matching the pattern "Estrateg_*-Config.dat"
+$paramDat = ".\Params.dat"
 $logFilePath = "./Logs/Log.dat"
 $estrategExe = ".\Estrateg.exe"
 $comparaExe = ".\Compara.exe"
 $configDatFilePath = "./Config.dat"
 $files = Get-ChildItem -Path "./" -Filter "Estrateg_*-Config.dat"
 
+# Read the PA
+try {
+    $pa = Get-Content -Path $paramDat | Select-Object -Index 1
+    $pa = [int]$pa  # Convert to integer
+} catch {
+    $pa = 10  # Default value in case of exception
+}
 
 # Loop through Estrategia
 foreach ($file in $files) {
@@ -48,7 +56,7 @@ foreach ($file in $files) {
             New-Item -ItemType Directory -Path $folderPath | Out-Null
         }
 
-        for ($i = 1; $i -le 10; $i++) {
+        for ($i = 1; $i -le $pa; $i++) {
             # Define the file name
             $fileName = "PPI_Ano $i.csv"
             $filePath = Join-Path -Path $specificFolderPath -ChildPath $fileName
