@@ -35,7 +35,7 @@ foreach ($file in $files) {
         # Deleta os arquivos de resultados antigos
         $specificFolderPath = "./Calc/Estrat_$numeroEstrategia"
         if (Test-Path $specificFolderPath) {
-            Get-ChildItem -Path $specificFolderPath -File | Where-Object { $_.Name -ne "RESTR.csv" -and $_.Name -ne "PROGRAMA.csv" } | Remove-Item -Force
+            Get-ChildItem -Path $specificFolderPath -File -Recurse | Where-Object { $_.Name -ne "RESTR.csv" -and $_.Name -ne "PROGRAMA.csv" } | Remove-Item -Force
         } else {
             New-Item -ItemType Directory -Path $specificFolderPath
         }
