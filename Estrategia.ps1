@@ -1,6 +1,10 @@
 ##
-# Estrategia - v1.0.0
+# Estrategia - v1.0.1
 ##
+Start-Sleep -Seconds 1
+
+# Set the ErrorActionPreference to Stop to ensure that any errors are treated as terminating errors
+$ErrorActionPreference = "Stop"
 
 # Find all Estrateg files matching the pattern "Estrateg_*-Config.dat"
 $paramDat = ".\Params.dat"

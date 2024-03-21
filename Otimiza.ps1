@@ -1,6 +1,7 @@
 ##
-# Otimiza - v1.0.0
+# Otimiza - v1.0.1
 ##
+Start-Sleep -Seconds 1
 
 # Set the ErrorActionPreference to Stop to ensure that any errors are treated as terminating errors
 $ErrorActionPreference = "Stop"
